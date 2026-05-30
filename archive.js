@@ -9,81 +9,73 @@ var perna2 = canvas.getContext('2d');
 var perna3 = canvas.getContext('2d');
 var perna4 = canvas.getContext('2d');
 var piso  = canvas.getContext('2d');
-var estojoCtx = canvas.getContext('2d');
-var lapisCtx = canvas.getContext('2d');
-var borrachaCtx = canvas.getContext('2d');
-var reguaCtx = canvas.getContext('2d');
 
-var teclas  = {};
+var borrachaCtx = canvas.getContext('2d');
+var lapisCtx = canvas.getContext('2d');
+var reguaCtx = canvas.getContext('2d');
+var estojo = canvas.getContext('2d');
+
+var teclas = {}; 
 var x = 100;
 
 var gravidade = 0.015;
 
-var borrachaX = Math.random() * 1200;
+var borrachaX = Math.random()*1200;
 var borrachaY = 40;
 var velBorracha = 0;
 
-var lapisX = Math.random() * 1200;
+var lapisX = Math.random()*1200;
 var lapisY = 40;
 var velLapis = 1;
 
-var reguaX = Math.random() * 1200;
+var reguaX = Math.random()*1200;
 var reguaY = 40;
 var velRegua = 2;
 
 document.addEventListener('keydown', e => teclas[e.key] = true);
 document.addEventListener('keyup', e => teclas[e.key] = false);
 
-
-function animate(){
+function animate() {
     requestAnimationFrame(animate);
- 
-estojo.clearRect(0, 0, canvas.width, canvas.height);
 
-}
+    estojo.clearRect(0, 0, canvas.width, canvas.height);
 
-mesa1.fillStyle = 'brown';
-mesa1.fillRect(0, 70, 700, 50);
+    mesa1.fillStyle = 'brown';
+    mesa1.fillRect(40, 70, 700, 50);
 
-mesa2.fillStyle = 'brown';
-mesa2.fillRect(820, 70, 700, 50);
+    mesa2.fillStyle = 'brown';
+    mesa2.fillRect(820, 70, 700, 50);
 
-perna1.fillStyle = 'black';
-perna1.fillRect(0, 120, 80, 400);
+    perna1.fillStyle = 'black';
+    perna1.fillRect(40, 120, 80, 400);
+    perna2.fillStyle = 'black';
+    perna2.fillRect(660, 120, 80, 400);
+    perna3.fillStyle = 'black';
+    perna3.fillRect(820, 120, 80, 400);
+    perna4.fillStyle = 'black';
+    perna4.fillRect(1440, 120, 80, 400);
 
-perna2.fillStyle = 'black';
-perna2.fillRect(620, 120, 80, 400);
+    piso.fillStyle = 'gray';
+    piso.fillRect(0, 450, 2000, 400);
 
-perna3.fillStyle = 'black';
-perna3.fillRect(820, 120, 80, 400);
+    if (teclas['ArrowLeft']) 
+        x -= 15;
+    if (teclas['ArrowRight'])
+         x += 15;
 
-perna4.fillStyle = 'black';
-perna4.fillRect(1440, 120, 80, 400);
+    estojo.fillStyle = "purple";
+    estojo.fillRect(x, 500, 200, 100);
 
-piso.fillStyle = 'gray'
-piso.fillRect(0, 450, 2000, 400);
+    velBorracha += gravidade;
+    borrachaY += velBorracha;
 
-if(teclas['ArrowLeft']){
-    x -= 15;
-}
-if(teclas['ArrowRight']){
-    x += 15;
-}
+    if (borrachaY > 550) {
+        borrachaY = 40;
+        borrachaX = Math.random() * (canvas.width - 50);
+        velBorracha = 0;
+    }
 
-estojo.fillStyle = 'purple';
-estojo.fillRect(x, 500,200,100);
-
-verborracha += gravidade;
-borrachaY += velBorracha;
-
-if(borrachaY > 550){
-    borrachaY = 40;
-    borrachaX = Math.random() *(canvas.width - 50);
-    velBorracha = 0;
-}
-
-
- borrachaCtx.fillStyle = "pink";
+    borrachaCtx.fillStyle = "pink";
     borrachaCtx.fillRect(borrachaX, borrachaY, 50, 30);
 
     if (x < borrachaX + 50 && x + 200 > borrachaX && 500 < borrachaY + 30) {
@@ -118,6 +110,7 @@ if(borrachaY > 550){
         reguaX = Math.random() * (canvas.width - 100);
         velRegua = 0;
     }
+
     reguaCtx.fillStyle = "blue";
     reguaCtx.fillRect(reguaX, reguaY, 100, 20);
 
@@ -126,6 +119,6 @@ if(borrachaY > 550){
         reguaX = Math.random()*(canvas.width - 100);
         velRegua = 0;
     }
-
+}
 
 animate();
