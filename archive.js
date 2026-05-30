@@ -23,21 +23,14 @@ var gravidade = 0.015;
 var borrachaX = Math.random()*1200;
 var borrachaY = 40;
 var velBorracha = 0;
-const borracha = "https://th.bing.com/th/id/R.28795cd0ebed1c39b9b6b1756e12fa23?rik=1lBBgUzpgGvZMQ&riu=http%3a%2f%2fwww.belclips.com.br%2fwp-content%2fuploads%2f2017%2f10%2fBorracha-Branca-com-capa-Faber-Castell-1.jpg&ehk=fymf%2bPMczc8IJl4iQKEqesQ5n4prHI%2fjRakblgtL2Ao%3d&risl=&pid=ImgRaw&r=0.jpg";
-document.getElementById("borracha").src = borracha;
 
 var lapisX = Math.random()*1200;
 var lapisY = 40;
 var velLapis = 1;
-const lapis = "";
-const lapis = "https://img.freepik.com/vetores-premium/lapis-de-chumbo-de-vetor-com-borracha-amarela-isolado-no-branco_87561-19.jpg";
-document.getElementById("lapis").src = lapis;
 
 var reguaX = Math.random()*1200;
 var reguaY = 40;
 var velRegua = 2;
-const regua = "https://th.bing.com/th/id/R.10895225?rik=1lBBgUzpgGvZMQ&riu=http%3a%2f%2fwww.belclips.com.br%2fwp-content%2fuploads%2f2017%2f10%2fBorracha-Branca-com-capa-Faber-Castell-1.jpg&ehk=fymf%2bPMczc8IJl4iQKEqesQ5n4prHI%2fjRakblgtL2Ao%3d&risl=&pid=ImgRaw&r=0.jpg";
-document.getElementById("regua").src = regua;
 
 document.addEventListener('keydown', e => teclas[e.key] = true);
 document.addEventListener('keyup', e => teclas[e.key] = false);
